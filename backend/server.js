@@ -1,5 +1,6 @@
 // Set up .env environment
-require('dotenv').config()
+const dotenv = require('dotenv').config()
+const { errorHandler } = require('./middleware/errorMiddleware') // Not require
 const express = require('express')
 const app = express()
 // Set up Mongoose connection
@@ -15,5 +16,13 @@ app.listen(port, () => {
 // Connect to the MongoDB
 connectDB()
 
+// This middleware parses incoming JSON data and makes it available in req.body
+app.use(express.json())
+// This middleware parses incoming URL-encoded data and makes it available in req.body
+app.use(express.urlencoded({ extended: false }))
+
 // Middleware
 app.use('/api/blogs', require('./routes/blogRoutes'))
+
+// This middleware is used to handle errors in the routes
+app.use(errorHandler) // Not require
