@@ -14,30 +14,31 @@ const getBlogs = asyncHandler(async (req, res) => {
     res.status(200).json(blogs)
 })
 
-//@desc     Set blog
+//@desc     Post blog
 //@route    POST /api/blogs
 //@access   Private
 const setBlog = asyncHandler(async (req, res) => {
-    // Check if req.user exists and has an id property
-    if (!req.user || !req.user._id) {
-        res.status(401).json({ message: 'Unauthorized' });
-        return;
+    const newBlog = new Blog(req.body)
+    try {
+      const saveBlog = await newBlog.save()
+      res.status(200).json(saveBlog)
+    } catch (error) {
+      res.status(500).json(error)
     }
-
     // Check if the request body contains the required fields (title and story)
-    if (!req.body.title || !req.body.story) {
-        res.status(400)
-        throw new Error('Please provide a title and story for the blog post')
-    }
+    // if (!req.body.title || !req.body.story) {
+    //     res.status(400)
+    //     throw new Error('Please provide a title and story for the blog post')
+    // }
 
-    // Create a new blog post using the Blog model
-    const blog = await Blog.create({
-        title: req.body.title,
-        story: req.body.story,
-        user: req.user._id, // Use the _id of the authenticated user
-    })
+    // // Create a new blog post using the Blog model
+    // const blog = await Blog.create({
+    //     title: req.body.title,
+    //     story: req.body.story,
+    //     user: req.user.id, // Use the id of the authenticated user
+    // })
 
-    res.status(200).json(blog)
+    // res.status(200).json(blog)
 })
 
 //@desc     Update blog
