@@ -3,23 +3,23 @@ const mongoose = require('mongoose')
 // Blog Entry Model
 const blogSchema = mongoose.Schema(
     {
-         image: {
+        image: {
             type: String,
             required: [false, 'Add an image']
-        }, 
-        title: {
+        },
+        name: {
             type: String,
-            required: [true, 'Please write title']
+            // required: [true, 'Please write title']
         },
         user: {
             type: mongoose.Schema.Types.ObjectId, // Id of the user
-            required: true,
+            // required: true,
             ref: 'User' // Reference to the User model
         },
-        story: {
+        text: {
             type: String,
             required: [true, 'Please write story']
-        } 
+        }
     },
     {
         timestamps: true
