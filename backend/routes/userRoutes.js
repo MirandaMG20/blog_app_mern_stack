@@ -36,17 +36,31 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+// Get User
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        const { password, ...other } = user._doc
+        res.status(200).json(other)
+    } catch (error) {
+        // console.error(error); // Log the error for debugging
+        res.status(500).json({ message: 'Server error' }); // Use 500 for server errors
+        // res.status(400).json(other)
+    }
+})
+
 // Delete User's Account
 router.delete('/:id', async (req, res) => {
     if (req.body.userId === req.params.id) {
-        // delete user's account and blogs
 
+        // delete user's account and blogs
         try {
             const user = await User.findById(req.params.id)
             try {
+                // delete all user's Blogs
                 await Blog.deleteMany({ name: user.name })
 
-                // only delete user account
+                // find and Delete user account
                 await User.findByIdAndRemove(req.params.id)
                 res.status(200).json('User has been deleted.')
             } catch (error) {
@@ -59,5 +73,6 @@ router.delete('/:id', async (req, res) => {
         res.status(401).json('You are not authorized to delete this account.')
     }
 })
+
 
 module.exports = router

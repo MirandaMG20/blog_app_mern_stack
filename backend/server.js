@@ -9,6 +9,7 @@ const connectDB = require('./config/database')
 // Bringing in Routes
 const authRoute = require('./routes/authRoutes')
 const userRoute = require('./routes/userRoutes') 
+const blogRoute = require('./routes/blogRoutes')
 
 // Set listening port
 const port = process.env.PORT || 3001
@@ -27,9 +28,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // Middleware
-app.use('/api/blogs', require('./routes/blogRoutes'))
 app.use('/auth', authRoute)
 app.use('/users', userRoute)
+app.use('/api/blogs', blogRoute)
 
 // This middleware is used to handle errors in the routes
 app.use(errorHandler) // Not require
