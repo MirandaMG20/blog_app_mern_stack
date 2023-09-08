@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-// User Info Model
+// User Register Model
 const userSchema = mongoose.Schema(
     {
         name: {
