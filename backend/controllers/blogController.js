@@ -55,6 +55,17 @@ const updateBlog = asyncHandler(async (req, res) => {
 //@route    DELETE /api/blogs/:id
 //@access   Private
 const deleteBlog = asyncHandler(async (req, res) => {
+    // Find blog the id
+    const blog = await Blog.findById(req.params.id)
+
+    // if no blog exists
+    if (!blog) {
+        res.status(400)
+        throw new Error('Blog not found')
+    }
+
+    await Blog.findByIdAndRemove(req.params.id)
+
     res.status(200).json({ message: `Delete Blog ${req.params.id}` })
 })
 
