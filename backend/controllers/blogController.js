@@ -18,16 +18,23 @@ const getBlogs = asyncHandler(async (req, res) => {
 //@route    POST /api/blogs
 //@access   Private
 const setBlog = asyncHandler(async (req, res) => {
-    // if no text throw an error
-    if (!req.body.text) {
-        res.status(400)
-        throw new Error('Please add Blog')
+    // Check if req.user exists and has an id property
+    if (!req.user || !req.user._id) {
+        res.status(401).json({ message: 'Unauthorized' });
+        return;
     }
 
+    // Check if the request body contains the required fields (title and story)
+    if (!req.body.title || !req.body.story) {
+        res.status(400)
+        throw new Error('Please provide a title and story for the blog post')
+    }
+
+    // Create a new blog post using the Blog model
     const blog = await Blog.create({
-        text: req.body.text,
-        // user: req.user.id,
-        // text: req.body.text
+        title: req.body.title,
+        story: req.body.story,
+        user: req.user._id, // Use the _id of the authenticated user
     })
 
     res.status(200).json(blog)

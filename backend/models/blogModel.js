@@ -13,8 +13,8 @@ const blogSchema = mongoose.Schema(
         },
         user: {
             type: mongoose.Schema.Types.ObjectId, // Id of the user
+            ref: 'User', // Reference to the User model
             required: true,
-            ref: 'User' // Reference to the User model
         },
         story: {
             type: String,
