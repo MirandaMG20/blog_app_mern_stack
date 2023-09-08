@@ -6,6 +6,9 @@ const User = require('../models/userModel')
 const Blog = require('../models/blogModel')
 
 // Update User's Information
+//@desc     Update user
+//@route    PUT /users/:id
+//@access   Private
 router.put('/:id', async (req, res) => {
 
     // Password Hashing
@@ -37,6 +40,9 @@ router.put('/:id', async (req, res) => {
 })
 
 // Get User
+//@desc     Get user
+//@route    GET /users/:id
+//@access   Private
 router.get('/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
@@ -50,6 +56,9 @@ router.get('/:id', async (req, res) => {
 })
 
 // Delete User's Account
+//@desc     Delete user
+//@route    DELETE /users/:id
+//@access   Private
 router.delete('/:id', async (req, res) => {
     if (req.body.userId === req.params.id) {
 

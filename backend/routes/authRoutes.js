@@ -6,7 +6,7 @@ const User = require('../models/userModel')
 
 //@desc     Register new user
 //@route    POST /auth/register
-//@access   Public
+//@access   Private
 router.post('/register', async (req, res) => {
     try {
         const salt = await bcrypt.genSalt(10)
@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
 
 //@desc   Authenticate a user
 //@route  POST /auth/login
-//@access Public
+//@access Private
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body
