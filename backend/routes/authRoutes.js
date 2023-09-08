@@ -1,4 +1,3 @@
-const asyncHandler = require('express-async-handler')
 const router = require('express').Router()
 const bcrypt = require('bcrypt')
 // Import User Model
