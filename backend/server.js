@@ -6,6 +6,9 @@ const app = express()
 // Set up Mongoose connection
 const connectDB = require('./config/database')
 // Set listening port
+
+const authRoute = require('./routes/authRoutes')
+
 const port = process.env.PORT || 3001
 
 // Listener
@@ -23,6 +26,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // Middleware
 app.use('/api/blogs', require('./routes/blogRoutes'))
+app.use('/auth', require('./routes/authRoutes'))
 
 // This middleware is used to handle errors in the routes
 app.use(errorHandler) // Not require

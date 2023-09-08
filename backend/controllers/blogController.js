@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler')
 const Blog = require('../models/blogModel')
 
 //@desc     Get Blogs 
-//@route    Get /api/blogs
+//@route    GET /api/blogs
 //@access   Private
 const getBlogs = asyncHandler(async (req, res) => {
     // Get Blogs from the database find by user id
