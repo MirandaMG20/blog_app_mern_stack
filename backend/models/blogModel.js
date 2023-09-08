@@ -12,10 +12,15 @@ const blogSchema = mongoose.Schema(
             require: true,
             unique: true,
         },
+        name: {
+            type: String,
+            require: true,
+        },
         story: {
             type: String,
             require: true,
         },
+
     },
     {
         timestamps: true
@@ -25,19 +30,19 @@ const blogSchema = mongoose.Schema(
 module.exports = mongoose.model('Blog', blogSchema)
 
 
-// image: {
-//     type: String
-// },
-// title: {
-//     type: String,
-//     required: [true, 'Please write title']
-// },
-// user: {
-//     type: mongoose.Schema.Types.ObjectId, // Id of the user
-//     ref: 'User', // Reference to the User model
-//     // required: true,
-// },
-// story: {
-//     type: String,
-//     required: [true, 'Please write story']
-// }
+    // image: {
+    //     type: String
+    // },
+    // title: {
+    //     type: String,
+    //     required: [true, 'Please write title']
+    // },
+    // user: {
+    //     type: mongoose.Schema.Types.ObjectId, // Id of the user
+    //     ref: 'User', // Reference to the User model
+    //     // required: true,
+    // },
+    // story: {
+    //     type: String,
+    //     required: [true, 'Please write story']
+    // }
