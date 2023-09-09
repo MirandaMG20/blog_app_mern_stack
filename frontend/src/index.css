@@ -6,6 +6,7 @@
 
 .header {
     font-family: Poppins, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    text-transform: capitalize;
     padding: 30px;
     margin: 0 0 40px 0;
     width: 100%;
@@ -18,13 +19,14 @@
     -webkit-filter: drop-shadow(0px 3px 10px #A437DB);
     filter: drop-shadow(0px 0px px #A437DB);
 
-
-
     @media (max-width: 900px) {
         flex-direction: column;
     }
 }
 
+.buttons:hover {
+    transform: scale(0.98);
+}
 
 /* Colors */
 /* #BB84E8 */
