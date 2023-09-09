@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../../../public/images/wide-miranda-logo-transparent.png'
 // import { Header } from '../../components/header/Header'
 
 function Header() {
@@ -7,7 +8,7 @@ function Header() {
             <header>
                 <div className=''>
                     <div className=''>
-                        <img src="" alt='logo' width='100px' />
+                        <img src={logo} alt='logo' width='300px' />
                     </div>
                 </div>
             </header>
