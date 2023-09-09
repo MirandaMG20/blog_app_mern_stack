@@ -2,6 +2,7 @@
 const dotenv = require('dotenv').config()
 const multer = require('multer')
 const path = require('path')
+const cors = require('cors')
 const { errorHandler } = require('./middleware/errorMiddleware') // Not require
 const express = require('express')
 const app = express()
@@ -29,6 +30,16 @@ app.use(express.json())
 // This middleware parses incoming URL-encoded data and makes it available in req.body
 app.use(express.urlencoded({ extended: false }))
 app.use('/images', express.static(path.join(__dirname, '/images')))
+// app.use(cors())
+// SETTING UP CORS OPTIONS TO AVOID ACCESS-CONTROL-ALLOW-ORIGIN ISSUES
+const corsOption = {
+    origin: "*",
+    methods: "GET, PUT, POST, DELETE",
+    credentials: true,
+    exposeHeaders: ["X-auth-token"],
+}
+// TRYING TO AVOID THE ACCESS-CONTROL-ALLOW-ORIGIN ISSUE
+app.use(cors(corsOption));
 
 const storage = multer.diskStorage({
     destination: (req, file, callb) => {
