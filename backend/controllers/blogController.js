@@ -3,6 +3,16 @@ const asyncHandler = require('express-async-handler')
 // Bring in our Blog Controller
 const Blog = require('../models/blogModel')
 
+// //@desc     Get Blog 
+// //@route    GET /api/blog/:id
+// //@access   Private
+// const getBlog = asyncHandler(async (req, res) => {
+//     // Get a blog from the database find by blog id
+//     const blog = await Blog.findById() // {user: req.user.id}
+
+//     // Return the blogs
+//     res.status(200).json(blog)
+// })
 
 //@desc     Get Blogs 
 //@route    GET /api/blogs
@@ -26,7 +36,7 @@ const setBlog = asyncHandler(async (req, res) => {
     } catch (error) {
       res.status(500).json(error)
     }
-    
+
     // Check if the request body contains the required fields (title and story)
     // if (!req.body.title || !req.body.story) {
     //     res.status(400)
