@@ -16,6 +16,7 @@ function Register() {
       email,
       password,
     };
+   
 
     try {
       const response = await fetch('http://localhost:3000/auth/register', {

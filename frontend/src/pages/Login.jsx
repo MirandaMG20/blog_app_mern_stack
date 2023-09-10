@@ -1,63 +1,52 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useUser } from './../contexts/UserContext.jsx';
 
 function Login() {
+  const { setUserData } = useUser();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  useEffect(() => {
+  const navigate = useNavigate(); // Create a history object
 
-    // Function to fetch blogs based on the search term
-    const getInfo = async () => {
-      // API endpoint URL with the search term we use a "template literals" ${}
-      const url = `http://localhost:3000/auth/register`;
-      const options = {
-        method: 'POST',
-      };
+  const loginUser = async (e) => {
+    e.preventDefault();
 
-      try {
-        // console.log(url)
-        // Sending the fetch request and awaiting the response
-        const response = await fetch(url, options);
-        const data = await response.json();
-        // console.log(data)
-        //Updating the state with fetched book data
-        setInfo(data);
-      } catch (error) {
-        // Logging an error if the fetch request fails
-        console.log(error);
-      }
-    };
-    getInfo()
-    // console.log('useEffect is running')
-  }, [])
-
-  // console.log(info)
-
-  const loginUser = () => {
-    fetch()
-  }
-
-  const [formLogin, setFormLogin] = useState({
-    email: '',
-    password: '',
-  })
-
-  const { email, password } = formLogin
-
-  const onSubmit = (e) => {
-    e.preventDefault()
-
-    const userData = {
+    const authUser = {
       email,
       password,
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(authUser),
+      });
+
+      // If Login is successful, navigate to the user dashboard, otherwise display error
+      if (response.status === 200) {
+        console.log('Login successful');
+        setUserData(response);
+
+        navigate('/user');
+      } else {
+        console.log('Login failed');
+        const errorData = await response.json();
+        console.error(errorData);
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
-    setFormLogin(userData)
-  }
+  };
 
   return (
     <div >
-      <h1>LOGIN</h1>
+      <h1>Login</h1>
 
-      <form>
+      <form onSubmit={loginUser}>
 
         <div>
           <input
@@ -65,9 +54,9 @@ function Login() {
             className='form-control'
             id='email'
             name='email'
-            // value={email}
-            placeholder='Enter your email'
-          // onChange={onChange}
+            value={email}
+            placeholder='Email'
+            onChange={e => setEmail(e.target.value)}
           />
         </div>
 
@@ -77,17 +66,16 @@ function Login() {
             className='form-control'
             id='password'
             name='password'
-            // value={password}
-            placeholder='Enter your password'
-          // onChange={onChange}
+            value={password}
+            placeholder='Password'
+            onChange={e => setPassword(e.target.value)}
           />
         </div>
 
         <button type='submit'>Login</button>
 
         <div>
-          Don't have an account yet?
-          <Link to={'/register'}>Register</Link>
+          Not a member? <Link to={'/register'}>Register</Link>
         </div>
 
       </form>

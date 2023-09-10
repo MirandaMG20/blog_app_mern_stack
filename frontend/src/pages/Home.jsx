@@ -6,7 +6,6 @@ function Home() {
   const [info, setInfo] = useState([])
 
   useEffect(() => {
-
     // Function to fetch blogs based on the search term
     const getInfo = async () => {
       // API endpoint URL with the search term we use a "template literals" ${}
