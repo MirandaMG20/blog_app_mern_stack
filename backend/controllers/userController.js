@@ -33,6 +33,7 @@ router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body
 
+        // Find user by email
         const user = await User.findOne({ email })
 
         // If no user
@@ -46,6 +47,7 @@ router.post('/login', async (req, res) => {
                 _id: user.id,
                 name: user.name,
                 email: user.email,
+                picture: user.picture,
             })
         } else {
             res.status(400).json('Wrong login!')
@@ -54,6 +56,14 @@ router.post('/login', async (req, res) => {
         return res.status(500).json(error)
     }
 })
+
+//@desc   Authenticate a user
+//@route  POST /auth/logout
+//@access Private
+router.get('/logout', async (req, res) => {
+
+})
+
 
 
 module.exports = router

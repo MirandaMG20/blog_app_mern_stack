@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link } from "react-router-dom"
-import { nav } from '../data/data'
+
 
 function Header() {
     return (
@@ -10,8 +10,8 @@ function Header() {
             <header className='header'>
 
                 <div className="buttons">
-                    <Link to='/home'>
-                        HOME
+                    <Link to='/'>
+                        HOME 
                     </Link>
                     {/* <ul>
                         {nav.map((link) => (

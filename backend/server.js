@@ -1,6 +1,5 @@
 // Set up .env environment
 const dotenv = require('dotenv').config()
-const multer = require('multer')
 const path = require('path')
 const cors = require('cors')
 const { errorHandler } = require('./middleware/errorMiddleware') // Not require
@@ -10,7 +9,7 @@ const app = express()
 const connectDB = require('./config/database')
 
 // Bringing in Routes
-const authRoute = require('./routes/authRoutes')
+const authRoute = require('./controllers/userController')
 const userRoute = require('./routes/userRoutes')
 const blogRoute = require('./routes/blogRoutes')
 
@@ -29,7 +28,9 @@ connectDB()
 app.use(express.json())
 // This middleware parses incoming URL-encoded data and makes it available in req.body
 app.use(express.urlencoded({ extended: false }))
+
 app.use('/images', express.static(path.join(__dirname, '/images')))
+
 // app.use(cors())
 // SETTING UP CORS OPTIONS TO AVOID ACCESS-CONTROL-ALLOW-ORIGIN ISSUES
 const corsOption = {
@@ -41,21 +42,12 @@ const corsOption = {
 // TRYING TO AVOID THE ACCESS-CONTROL-ALLOW-ORIGIN ISSUE
 app.use(cors(corsOption));
 
-const storage = multer.diskStorage({
-    destination: (req, file, callb) => {
-        callb(null, 'images')
-    },
-    filename: (req, file, callb) => {
-        callb(null, 'file.png')
-    }
-})
+// Middleware => Moved it to blogController
+// app.post('/upload', upload.single('file'), (req, res) => {
+//     res.status(200).json('File has been uploaded')
+// })
 
-const upload = multer({ storage: storage })
-
-// Middleware
-app.post('/upload', upload.single('file'), (req, res) => {
-    res.status(200).json('File has been uploaded')
-})
+// Routing 
 app.use('/auth', authRoute)
 app.use('/users', userRoute)
 app.use('/api/blogs', blogRoute)

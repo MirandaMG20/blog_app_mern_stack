@@ -7,7 +7,7 @@ function Home() {
 
   useEffect(() => {
 
-    // Function to fetch books based on the search term
+    // Function to fetch blogs based on the search term
     const getInfo = async () => {
       // API endpoint URL with the search term we use a "template literals" ${}
       const url = `http://localhost:3000/api/blogs`;
@@ -16,7 +16,7 @@ function Home() {
       };
 
       try {
-        console.log(url)
+        // console.log(url)
         // Sending the fetch request and awaiting the response
         const response = await fetch(url, options);
         const data = await response.json();
@@ -29,18 +29,14 @@ function Home() {
       }
     };
     getInfo()
-    console.log('useEffect is running')
-    // return () => {
-    //   second
-    // }
+    // console.log('useEffect is running')
   }, [])
 
-  console.log(info)
+  // console.log(info)
 
   return (
 
     <div>
-      <h1>HOME</h1>
 
       {info.map((Blog,i) => (
         <div key={i}>

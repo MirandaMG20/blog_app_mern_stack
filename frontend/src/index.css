@@ -4,6 +4,10 @@
     background: #130a18;
 }
 
+body {
+    color: #ffff;
+}
+
 .header {
     font-family: Poppins, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     text-transform: capitalize;

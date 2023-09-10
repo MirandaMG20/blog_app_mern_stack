@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 
 function Login() {
 
-  const [formData, setFormData] = useState({
+  const [formLogin, setFormLogin] = useState({
     email: '',
     password: '',
   })
 
-  const { email, password } = formData
+  const { email, password } = formLogin
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -17,7 +17,7 @@ function Login() {
       email,
       password,
     }
-    login(userData)
+    setFormLogin(userData)
   }
 
   return (

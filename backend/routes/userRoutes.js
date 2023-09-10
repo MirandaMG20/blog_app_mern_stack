@@ -5,7 +5,22 @@ const User = require('../models/userModel')
 // Import Blog Model
 const Blog = require('../models/blogModel')
 
-// Update User's Information
+
+//@desc     Get user
+//@route    GET /users/:id
+//@access   Private
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        const { password, ...other } = user._doc
+        res.status(200).json(other)
+    } catch (error) {
+        // console.error(error); // Log the error for debugging
+        res.status(500).json({ message: 'Server error' }); // Use 500 for server errors
+        // res.status(400).json(other)
+    }
+})
+
 //@desc     Update user
 //@route    PUT /users/:id
 //@access   Private
@@ -39,23 +54,6 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-// Get User
-//@desc     Get user
-//@route    GET /users/:id
-//@access   Private
-router.get('/:id', async (req, res) => {
-    try {
-        const user = await User.findById(req.params.id)
-        const { password, ...other } = user._doc
-        res.status(200).json(other)
-    } catch (error) {
-        // console.error(error); // Log the error for debugging
-        res.status(500).json({ message: 'Server error' }); // Use 500 for server errors
-        // res.status(400).json(other)
-    }
-})
-
-// Delete User's Account
 //@desc     Delete user
 //@route    DELETE /users/:id
 //@access   Private
