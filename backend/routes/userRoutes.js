@@ -6,7 +6,7 @@ const User = require('../models/userModel')
 const Blog = require('../models/blogModel')
 
 
-//@desc     Get user
+//@desc     Set user
 //@route    GET /users/:id
 //@access   Private
 router.get('/:id', async (req, res) => {

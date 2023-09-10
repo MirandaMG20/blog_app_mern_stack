@@ -3,6 +3,39 @@ import { Link } from "react-router-dom"
 
 function Login() {
 
+  useEffect(() => {
+
+    // Function to fetch blogs based on the search term
+    const getInfo = async () => {
+      // API endpoint URL with the search term we use a "template literals" ${}
+      const url = `http://localhost:3000/auth/register`;
+      const options = {
+        method: 'POST',
+      };
+
+      try {
+        // console.log(url)
+        // Sending the fetch request and awaiting the response
+        const response = await fetch(url, options);
+        const data = await response.json();
+        // console.log(data)
+        //Updating the state with fetched book data
+        setInfo(data);
+      } catch (error) {
+        // Logging an error if the fetch request fails
+        console.log(error);
+      }
+    };
+    getInfo()
+    // console.log('useEffect is running')
+  }, [])
+
+  // console.log(info)
+
+  const loginUser = () => {
+    fetch()
+  }
+
   const [formLogin, setFormLogin] = useState({
     email: '',
     password: '',
@@ -50,7 +83,7 @@ function Login() {
           />
         </div>
 
-        <button>Login</button>
+        <button type='submit'>Login</button>
 
         <div>
           Don't have an account yet?

@@ -57,13 +57,12 @@ router.post('/login', async (req, res) => {
     }
 })
 
-//@desc   Authenticate a user
+//@desc   Logout a user (dummy route, no actual session or token handling)
 //@route  POST /auth/logout
 //@access Private
-router.get('/logout', async (req, res) => {
-
+router.post('/logout', async (req, res) => {
+    res.status(200).json({ message: 'Logout successful' });
 })
-
 
 
 module.exports = router
