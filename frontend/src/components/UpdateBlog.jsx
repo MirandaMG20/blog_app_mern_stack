@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BsBoxArrowDownLeft } from "react-icons/bs";
+import { BsPencilFill } from "react-icons/bs";
 
 
 function updateBlog({ getBlogs, blog }) {
@@ -69,7 +69,7 @@ function updateBlog({ getBlogs, blog }) {
                 </div>
 
                 <button type='submit'>
-                    <BsBoxArrowDownLeft />
+                    <BsPencilFill />
                 </button>
 
             </form>

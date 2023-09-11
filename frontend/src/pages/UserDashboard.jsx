@@ -5,10 +5,21 @@ import { BsFillXSquareFill, BsEnvelopeHeartFill } from "react-icons/bs";
 //  BsFillPencilFill BsClipboardCheck 
 
 
-function UserDashboard() {
+function UserDashboard({ editBlogs }) {
   const user = JSON.parse(localStorage.user);
 
   const [blogs, setBlogs] = useState([])
+  const [editingBlogId, setEditingBlogId] = useState(null);
+
+  const handleEditClick = (blogId) => {
+    // Set the editingBlogId to the clicked blog's ID
+    setEditingBlogId(blogId);
+  };
+
+  const handleOverlayClose = () => {
+    // Close the overlay by setting editingBlogId to null
+    setEditingBlogId(null);
+  };
 
   // Function to fetch blogs based on the search term
   const getBlogs = async () => {
@@ -69,35 +80,44 @@ function UserDashboard() {
 
   return (
     <div>
-      <h1>  
-      Welcome {user.name}! 
+      <h1>
+        Welcome {user.name}!
       </h1>
-
-      {/* <div>Name: {user.name}</div>
-      <div>Email: {user.email}</div> */}
 
       <CreateBlog updateBlogs={updateBlogs} />
 
       <div>
+        {/* Displaying blog details */}
         {blogs.map((blog, i) => (
-          <div key={i}>
+          <div key={i} >
             <h2>{blog.title}</h2>
             <p>{blog.story}</p>
             <a>{formatDate(blog.createdAt)}</a>
-
-            {/* Create an Update Button */}
-
-            <UpdateBlog getBlogs={getBlogs} blog={blog} />
+            <br />
+            <br />
 
             <button onClick={e => deleteBlog(blog._id)}>
               <BsFillXSquareFill />
             </button>
 
+            {/* UpdateBlog i want it to be an overlay */}
+            <button onClick={() => handleEditClick(blog._id)}>Edit</button>
+
+            {/* Conditional rendering of UpdateBlog with overlay */}
+            {editingBlogId === blog._id && (
+              <div>
+                <UpdateBlog getBlogs={getBlogs} blog={blog} />
+                <button className="overlay-background" onClick={handleOverlayClose}>Close</button>
+                
+              </div>)}
+
+
+
           </div>
         ))}
       </div>
 
-    </div>
+    </div >
   )
 }
 
