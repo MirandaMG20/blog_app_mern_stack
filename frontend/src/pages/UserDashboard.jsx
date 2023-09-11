@@ -79,7 +79,7 @@ function UserDashboard({ editBlogs }) {
   };
 
   return (
-    <div>
+    <div className='dashboard'>
       <h1>
         Welcome {user.name}!
       </h1>

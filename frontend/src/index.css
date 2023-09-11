@@ -36,7 +36,25 @@ body {
     background-color: #242424;
     display: flex;
     overflow: hidden;
+    margin: 20px;
 }
+
+.BlogCard {
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    text-align: center;
+    line-height: 1.3;
+}
+.dashboard {
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    text-align: center;
+    line-height: 1.3;
+}
+
+
 
 /* Colors */
 /* #BB84E8 */

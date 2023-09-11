@@ -39,14 +39,14 @@ function Home() {
 
   return (
 
-    <div className="d-flex flex-wrap" id='home-container'>
+    <div id='home-container'>
 
       {info.map((Blog, i) => (
         <div key={i} className='BlogCard'>
           <h2>{Blog.title}</h2>
           <a>By {Blog.name}</a>
-          <p>{Blog.story}</p>
           <a>{formatDate(Blog.createdAt)}</a>
+          <p>{Blog.story}</p>
         </div>
       ))}
 

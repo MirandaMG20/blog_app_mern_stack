@@ -31,6 +31,10 @@ function createBlog({ updateBlogs }) {
                 console.log('Blog posted successfully');
                 const data = await response.json();
                 updateBlogs(data);
+
+                // Clear the text input fields
+                setTitle('');
+                setStory('');
             } else {
                 console.log('Post failed');
                 const errorData = await response.json();
@@ -44,7 +48,7 @@ function createBlog({ updateBlogs }) {
     return (
         <div >
             <h1>
-            <BsEnvelopeHeartFill/>
+                <BsEnvelopeHeartFill />
                 Let's Blog!
             </h1>
 

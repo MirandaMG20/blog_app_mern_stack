@@ -32,7 +32,7 @@ function Register() {
         // Registration successful
         console.log('Registration successful');
         // If registration is successful, navigate to the user dashboard
-        navigate('/user');
+        navigate('/login');
       } else {
         // Registration failed
         console.log('Registration failed');
