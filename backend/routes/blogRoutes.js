@@ -6,7 +6,8 @@ const { getBlogs, setBlog, updateBlog, deleteBlog } = require('../controllers/bl
 
 
 // Route Definitions: Get Blogs Route & Create Blog Route
-router.route('/').get(getBlogs).post(setBlog)
+router.route('/:userId').get(getBlogs)
+router.route('/').post(setBlog)
 
 // Route Definitions: Update Blog Route & Delete Blog Route
 router.route('/:id').put(updateBlog).delete(deleteBlog)

@@ -10,7 +10,6 @@ const blogSchema = mongoose.Schema(
         title: {
             type: String,
             require: true,
-            unique: true,
         },
         name: {
             type: String,
@@ -20,7 +19,10 @@ const blogSchema = mongoose.Schema(
             type: String,
             require: true,
         },
-
+        userId: {
+            type: String,
+            require: true,
+        }
     },
     {
         timestamps: true

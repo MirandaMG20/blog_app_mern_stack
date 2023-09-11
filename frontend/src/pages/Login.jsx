@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
-import { useUser } from './../contexts/UserContext.jsx';
+
 
 function Login() {
-  const { setUserData } = useUser();
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -29,7 +29,8 @@ function Login() {
       // If Login is successful, navigate to the user dashboard, otherwise display error
       if (response.status === 200) {
         console.log('Login successful');
-        setUserData(response);
+        const responseData = await response.json(); // Convert the response body to JSON
+        localStorage.setItem('user', JSON.stringify(responseData));
 
         navigate('/user');
       } else {

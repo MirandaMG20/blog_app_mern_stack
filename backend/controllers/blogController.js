@@ -52,8 +52,7 @@ const setBlog = asyncHandler(async (req, res) => {
 //@access   Private
 const getBlogs = asyncHandler(async (req, res) => {
     // Get Blogs from the database
-    const blogs = await Blog.find()
-    // const blog = await Blog.findById({user: req.user.id})
+    const blogs = await Blog.find({userId: req.params.userId})
 
     // Return the blogs
     res.status(200).json(blogs)

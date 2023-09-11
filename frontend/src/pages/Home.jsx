@@ -29,7 +29,7 @@ function Home() {
     };
     getInfo()
     // console.log('useEffect is running')
-  }, [])
+  }, []) // Empty dependency array ensures this effect runs only once
 
   // console.log(info)
 
