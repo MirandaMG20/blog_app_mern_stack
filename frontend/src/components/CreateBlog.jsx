@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BsEnvelopeHeartFill, BsFillEnvelopePaperHeartFill } from "react-icons/bs";
 
 
 function createBlog({ updateBlogs }) {
@@ -42,7 +43,10 @@ function createBlog({ updateBlogs }) {
 
     return (
         <div >
-            <h1>Let's Blog!</h1>
+            <h1>
+            <BsEnvelopeHeartFill/>
+                Let's Blog!
+            </h1>
 
             <form onSubmit={postBlog}>
 
@@ -70,7 +74,9 @@ function createBlog({ updateBlogs }) {
                     />
                 </div>
 
-                <button type='submit'>Post</button>
+                <button type='submit'>
+                    < BsFillEnvelopePaperHeartFill />
+                </button>
 
             </form>
         </div>

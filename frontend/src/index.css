@@ -5,7 +5,7 @@
 }
 
 body {
-    color: #ffff;
+    color: #939393;
 }
 
 .header {
@@ -28,10 +28,11 @@ body {
     }
 }
 
-.buttons:hover {
+/* .buttons:hover {
     transform: scale(0.98);
-}
+} */
 
 /* Colors */
 /* #BB84E8 */
 /* #A437DB */
+/* #939393 */

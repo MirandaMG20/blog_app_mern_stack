@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
+import { FaSignInAlt } from 'react-icons/fa'
 
 
 function Login() {
@@ -73,7 +74,9 @@ function Login() {
           />
         </div>
 
-        <button type='submit'>Login</button>
+        <button type='submit'>
+          <FaSignInAlt /> Login
+        </button>
 
         <div>
           Not a member? <Link to={'/register'}>Register</Link>

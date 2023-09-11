@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BsBoxArrowDownLeft } from "react-icons/bs";
 
 
 function updateBlog({ getBlogs, blog }) {
@@ -37,8 +38,9 @@ function updateBlog({ getBlogs, blog }) {
     };
 
     return (
-        <div >
-            <h1>Update Blog</h1>
+        <div className="d-flex flex-row bd-highlight mb-3">
+
+            <h4>Update Blog</h4>
 
             <form onSubmit={postBlog}>
 
@@ -66,7 +68,9 @@ function updateBlog({ getBlogs, blog }) {
                     />
                 </div>
 
-                <button type='submit'>Post</button>
+                <button type='submit'>
+                    <BsBoxArrowDownLeft />
+                </button>
 
             </form>
         </div>

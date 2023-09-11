@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
+import { BsPencilSquare } from "react-icons/bs";
 
 function Register() {
   const [name, setName] = useState('')
@@ -16,7 +17,7 @@ function Register() {
       email,
       password,
     };
-   
+
 
     try {
       const response = await fetch('http://localhost:3000/auth/register', {
@@ -85,7 +86,9 @@ function Register() {
           />
         </div>
 
-        <button type='submit'>Register</button>
+        <button type='submit'>
+          <BsPencilSquare/>
+        </button>
 
         <div>
           Already a member? <Link to={'/login'}>Login</Link>

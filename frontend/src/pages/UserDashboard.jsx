@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import CreateBlog from '../components/CreateBlog'
 import UpdateBlog from '../components/UpdateBlog'
-
+import { BsFillXSquareFill, BsEnvelopeHeartFill } from "react-icons/bs";
+//  BsFillPencilFill BsClipboardCheck 
 
 
 function UserDashboard() {
@@ -68,7 +69,9 @@ function UserDashboard() {
 
   return (
     <div>
-      <h1>Welcome {user.name}!</h1>
+      <h1>  
+      Welcome {user.name}! 
+      </h1>
 
       {/* <div>Name: {user.name}</div>
       <div>Email: {user.email}</div> */}
@@ -86,7 +89,9 @@ function UserDashboard() {
 
             <UpdateBlog getBlogs={getBlogs} blog={blog} />
 
-            <button onClick={e => deleteBlog(blog._id)}>Delete</button>
+            <button onClick={e => deleteBlog(blog._id)}>
+              <BsFillXSquareFill />
+            </button>
 
           </div>
         ))}
