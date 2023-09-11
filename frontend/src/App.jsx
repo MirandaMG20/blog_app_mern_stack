@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import UserDashboard from './pages/UserDashboard'
+import Footer from './components/Footer';
+
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/user' element={<UserDashboard />} />
       </Routes>
+
+      <Footer />
     </>
   )
 }

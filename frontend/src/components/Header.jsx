@@ -13,7 +13,7 @@ function Header() {
 
                 <div>
 
-                    <Link >
+                    <Link to='/'>
                         <BsHouseDoorFill /> HOME
                     </Link>
                     <br />
