@@ -34,17 +34,11 @@ const setBlog = asyncHandler(async (req, res) => {
     try {
         const newBlog = await blog.save()
 
-        // Format the createdAt date to display only month, date, and year
-        const createdAtDate = new Date(blog.createdAt);
-        const formattedDate = `${createdAtDate.getMonth() + 1}/${createdAtDate.getDate()}/${createdAtDate.getFullYear()}`;
+        res.status(200).json({ ...newBlog.toObject()});
 
-        res.status(200).json({ ...blog.toObject(), createdAt: formattedDate });
-        res.status(200).json(newBlog)
     } catch (error) {
         res.status(500).json(error)
     }
-
-    res.status(200).json(blog)
 })
 
 //@desc     Get Blogs 
@@ -53,6 +47,17 @@ const setBlog = asyncHandler(async (req, res) => {
 const getBlogs = asyncHandler(async (req, res) => {
     // Get Blogs from the database
     const blogs = await Blog.find({userId: req.params.userId})
+
+    // Return the blogs
+    res.status(200).json(blogs)
+})
+
+//@desc     Get All Blogs 
+//@route    GET /api/all
+//@access   Private
+const allBlogs = asyncHandler(async (req, res) => {
+    // Get Blogs from the database
+    const blogs = await Blog.find()
 
     // Return the blogs
     res.status(200).json(blogs)
@@ -96,6 +101,7 @@ const deleteBlog = asyncHandler(async (req, res) => {
 
 module.exports = {
     getBlogs,
+    allBlogs,
     setBlog,
     updateBlog,
     deleteBlog,
