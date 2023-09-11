@@ -32,6 +32,12 @@ body {
     transform: scale(0.98);
 } */
 
+#home-container {
+    background-color: #242424;
+    display: flex;
+    overflow: hidden;
+}
+
 /* Colors */
 /* #BB84E8 */
 /* #A437DB */

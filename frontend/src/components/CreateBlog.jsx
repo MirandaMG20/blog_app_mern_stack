@@ -57,19 +57,19 @@ function createBlog({ updateBlogs }) {
                         id='title'
                         name='title'
                         value={title}
-                        placeholder='title'
+                        placeholder='Title'
                         onChange={e => setTitle(e.target.value)}
                     />
                 </div>
 
                 <div>
-                    <input
+                    <textarea
                         type='text'
                         className='form-control'
                         id='story'
                         name='story'
                         value={story}
-                        placeholder='story'
+                        placeholder='Story'
                         onChange={e => setStory(e.target.value)}
                     />
                 </div>

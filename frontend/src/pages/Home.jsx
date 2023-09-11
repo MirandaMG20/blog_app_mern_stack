@@ -31,14 +31,22 @@ function Home() {
     // console.log('useEffect is running')
   }, []) // Empty dependency array ensures this effect runs only once
 
+  const formatDate = (date) => {
+    // Format the createdAt date to display only month, date, and year
+    const createdAtDate = new Date(date);
+    return `${createdAtDate.getMonth() + 1}/${createdAtDate.getDate()}/${createdAtDate.getFullYear()}`;
+  };
+
   return (
 
-    <div>
+    <div className="d-flex flex-wrap" id='home-container'>
 
       {info.map((Blog, i) => (
-        <div key={i}>
+        <div key={i} className='BlogCard'>
           <h2>{Blog.title}</h2>
+          <a>By {Blog.name}</a>
           <p>{Blog.story}</p>
+          <a>{formatDate(Blog.createdAt)}</a>
         </div>
       ))}
 
