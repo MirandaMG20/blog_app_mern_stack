@@ -68,10 +68,10 @@ function UserDashboard() {
 
   return (
     <div>
-      <h1>User Dashboard</h1>
+      <h1>Welcome {user.name}!</h1>
 
-      <div>Name: {user.name}</div>
-      <div>Email: {user.email}</div>
+      {/* <div>Name: {user.name}</div>
+      <div>Email: {user.email}</div> */}
 
       <CreateBlog updateBlogs={updateBlogs} />
 
@@ -82,6 +82,8 @@ function UserDashboard() {
             <p>{blog.story}</p>
             <a>{formatDate(blog.createdAt)}</a>
 
+            {/* Create an Update Button */}
+
             <UpdateBlog getBlogs={getBlogs} blog={blog} />
 
             <button onClick={e => deleteBlog(blog._id)}>Delete</button>
@@ -89,8 +91,6 @@ function UserDashboard() {
           </div>
         ))}
       </div>
-
-
 
     </div>
   )

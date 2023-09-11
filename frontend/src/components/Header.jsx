@@ -10,16 +10,15 @@ function Header() {
             <header className='header'>
 
                 <div className="buttons">
+                    
                     <Link to='/'>
                         HOME 
                     </Link>
-                    {/* <ul>
-                        {nav.map((link) => (
-                            <li key={link.id}>
-                                <Link to={link.url}>{link.text}</Link>
-                            </li>
-                        ))}
-                    </ul> */}
+                    <br/>
+                    <Link to='/user'>
+                        My Dashboard 
+                    </Link>
+
                 </div>
 
                 <div className='logo'>

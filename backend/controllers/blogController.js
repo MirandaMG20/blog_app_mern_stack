@@ -53,7 +53,7 @@ const getBlogs = asyncHandler(async (req, res) => {
 })
 
 //@desc     Get All Blogs 
-//@route    GET /api/all
+//@route    GET /api/blogs/all
 //@access   Private
 const allBlogs = asyncHandler(async (req, res) => {
     // Get Blogs from the database

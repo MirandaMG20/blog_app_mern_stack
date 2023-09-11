@@ -9,7 +9,7 @@ function Home() {
     // Function to fetch blogs based on the search term
     const getInfo = async () => {
       // API endpoint URL with the search term we use a "template literals" ${}
-      const url = `http://localhost:3000/api/all`;
+      const url = `http://localhost:3000/api/blogs`;
       const options = {
         method: 'GET',
       };
@@ -31,13 +31,11 @@ function Home() {
     // console.log('useEffect is running')
   }, []) // Empty dependency array ensures this effect runs only once
 
-  // console.log(info)
-
   return (
 
     <div>
 
-      {info.map((Blog,i) => (
+      {info.map((Blog, i) => (
         <div key={i}>
           <h2>{Blog.title}</h2>
           <p>{Blog.story}</p>
