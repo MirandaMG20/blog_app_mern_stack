@@ -117,11 +117,15 @@ function UserDashboard({ editBlogs }) {
             <a>{formatDate(blog.createdAt)}</a>
             <p>{blog.story}</p>
 
-            <button onClick={e => deleteBlog(blog._id)}>
+            <button
+              className="iconBtns"
+              onClick={e => deleteBlog(blog._id)}>
               <BsFillTrash3Fill />
             </button>
 
-            <button onClick={() => handleEditClick(blog._id)}>
+            <button
+              className="iconBtns"
+              onClick={() => handleEditClick(blog._id)}>
               <BsPencilFill />
             </button>
 
@@ -129,11 +133,13 @@ function UserDashboard({ editBlogs }) {
             {editingBlogId === blog._id && (
               <div>
                 <UpdateBlog getBlogs={getBlogs} blog={blog} />
+
                 <button
-                  className="overlay-background"
+                  className="iconBtns"
                   onClick={handleOverlayClose}>
                   <BsFillXSquareFill />
                 </button>
+
               </div>)}
 
           </div>

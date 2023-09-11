@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { FaSignInAlt, FaUser } from 'react-icons/fa'
-import { BsHouseDoorFill, BsCardText } from "react-icons/bs";
+import { BsHouseDoorFill, BsEmojiSunglassesFill } from "react-icons/bs";
 
 
 function Header() {
@@ -13,23 +13,23 @@ function Header() {
 
                 <div>
 
-                    <Link to='/'>
+                    <Link >
                         <BsHouseDoorFill /> HOME
                     </Link>
                     <br />
                     <Link to='/user'>
-                        <BsCardText />  My Dashboard
+                        <BsEmojiSunglassesFill />  My Dashboard
                     </Link>
 
                 </div>
 
-                <div>
-                    <img
+                <Link to='/'>
+                    <img className='iconBtns'
                         src='images/wide-miranda-logo-transparent.png'
                         alt='logo'
                         width='300px'
                     />
-                </div>
+                </Link>
 
                 <div>
 

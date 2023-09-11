@@ -68,7 +68,7 @@ function updateBlog({ getBlogs, blog }) {
                     />
                 </div>
 
-                <button type='submit'>
+                <button type='submit' className='iconBtns'>
                     <BsPencilFill />
                 </button>
 

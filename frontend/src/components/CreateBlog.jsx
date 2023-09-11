@@ -80,7 +80,7 @@ function createBlog({ updateBlogs }) {
                     />
                 </div>
 
-                <button type='submit'>
+                <button type='submit' className='iconBtns'>
                     < BsFillEnvelopePaperHeartFill />
                 </button>
 

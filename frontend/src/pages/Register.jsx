@@ -86,7 +86,7 @@ function Register() {
           />
         </div>
 
-        <button type='submit'>
+        <button type='submit' className='iconBtns'>
           <BsPencilSquare/>
         </button>
 

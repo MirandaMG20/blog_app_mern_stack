@@ -6,10 +6,10 @@
 
 body {
     color: #939393;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header {
-    font-family: Poppins, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     text-transform: capitalize;
     padding: 30px;
     margin: 0 0 30px 0;
@@ -27,10 +27,6 @@ body {
         flex-direction: column;
     }
 }
-
-/* .buttons:hover {
-    transform: scale(0.98);
-} */
 
 #home-container {
     /* background-color: #242424; */
@@ -68,7 +64,8 @@ body {
     line-height: 1.3;
 }
 
-.registerForm, .loginForm {
+.registerForm,
+.loginForm {
     font: inherit;
     font-size: 20px;
     font-weight: bold;
@@ -87,6 +84,19 @@ body {
     flex-direction: column;
     text-align: center;
     line-height: 1.3;
+}
+
+.iconBtns {
+    font-size: 30px;
+    color: #A437DB;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+    background-color: transparent;
+}
+
+.iconBtns:hover {
+    transform: scale(1.5);
 }
 
 .inputCreate {
