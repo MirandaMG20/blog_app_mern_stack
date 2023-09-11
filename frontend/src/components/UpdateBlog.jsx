@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BsPencilFill } from "react-icons/bs";
+import { BsPencilFill } from "react-icons/bs"; <BsPencilFill />
 
 
 function updateBlog({ getBlogs, blog }) {
@@ -38,9 +38,9 @@ function updateBlog({ getBlogs, blog }) {
     };
 
     return (
-        <div className="d-flex flex-row bd-highlight mb-3">
+        <div className="UpdateForm">
 
-            <h4>Update Blog</h4>
+            <h3>Update Blog</h3>
 
             <form onSubmit={postBlog}>
 

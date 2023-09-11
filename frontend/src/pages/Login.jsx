@@ -45,7 +45,7 @@ function Login() {
   };
 
   return (
-    <div >
+    <div className='login'>
       <h1>Login</h1>
 
       <form onSubmit={loginUser}>
@@ -53,7 +53,7 @@ function Login() {
         <div>
           <input
             type='email'
-            className='form-control'
+            className='loginForm'
             id='email'
             name='email'
             value={email}
@@ -65,7 +65,7 @@ function Login() {
         <div>
           <input
             type='password'
-            className='form-control'
+            className='loginForm'
             id='password'
             name='password'
             value={password}
@@ -75,7 +75,7 @@ function Login() {
         </div>
 
         <button type='submit'>
-          <FaSignInAlt /> Login
+          <FaSignInAlt />
         </button>
 
         <div>

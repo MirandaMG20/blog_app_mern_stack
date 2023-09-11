@@ -45,7 +45,7 @@ function Register() {
   };
 
   return (
-    <div >
+    <div className='register'>
       <h1>Register</h1>
 
       <form onSubmit={registerUser}>
@@ -53,7 +53,7 @@ function Register() {
         <div>
           <input
             type='text'
-            className='form-control'
+            className='registerForm'
             id='name'
             name='name'
             value={name}
@@ -65,7 +65,7 @@ function Register() {
         <div>
           <input
             type='email'
-            className='form-control'
+            className='registerForm'
             id='email'
             name='email'
             value={email}
@@ -77,7 +77,7 @@ function Register() {
         <div>
           <input
             type='password'
-            className='form-control'
+            className='registerForm'
             id='password'
             name='password'
             value={password}

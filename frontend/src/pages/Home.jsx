@@ -6,9 +6,7 @@ function Home() {
   const [info, setInfo] = useState([])
 
   useEffect(() => {
-    // Function to fetch blogs based on the search term
     const getInfo = async () => {
-      // API endpoint URL with the search term we use a "template literals" ${}
       const url = `http://localhost:3000/api/blogs`;
       const options = {
         method: 'GET',
@@ -20,7 +18,7 @@ function Home() {
         const response = await fetch(url, options);
         const data = await response.json();
         // console.log(data)
-        //Updating the state with fetched book data
+        // Updating the state 
         setInfo(data);
       } catch (error) {
         // Logging an error if the fetch request fails
@@ -31,17 +29,19 @@ function Home() {
     // console.log('useEffect is running')
   }, []) // Empty dependency array ensures this effect runs only once
 
+  // Format the createdAt date to display only month, date, and year
   const formatDate = (date) => {
-    // Format the createdAt date to display only month, date, and year
     const createdAtDate = new Date(date);
     return `${createdAtDate.getMonth() + 1}/${createdAtDate.getDate()}/${createdAtDate.getFullYear()}`;
   };
+
+  const sortedInfo = [...info].reverse(); // Create a reversed copy of the blogs array
 
   return (
 
     <div id='home-container'>
 
-      {info.map((Blog, i) => (
+      {sortedInfo.map((Blog, i) => (
         <div key={i} className='BlogCard'>
           <h2>{Blog.title}</h2>
           <a>By {Blog.name}</a>

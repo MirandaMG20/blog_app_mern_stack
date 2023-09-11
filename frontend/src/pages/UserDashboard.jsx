@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import CreateBlog from '../components/CreateBlog'
 import UpdateBlog from '../components/UpdateBlog'
-import { BsFillXSquareFill, BsEnvelopeHeartFill } from "react-icons/bs";
-//  BsFillPencilFill BsClipboardCheck 
+import { BsFillXSquareFill, BsPencilFill, BsFillTrash3Fill } from "react-icons/bs";
+import { FaSignOutAlt } from 'react-icons/fa'
 
 
 function UserDashboard({ editBlogs }) {
@@ -69,7 +70,7 @@ function UserDashboard({ editBlogs }) {
 
   const updateBlogs = (newBlog) => {
     // Add the new blog to the existing list of blogs
-    setBlogs([...blogs, newBlog]);
+    setBlogs([newBlog, ...blogs]);
   };
 
   const formatDate = (date) => {
@@ -78,40 +79,62 @@ function UserDashboard({ editBlogs }) {
     return `${createdAtDate.getMonth() + 1}/${createdAtDate.getDate()}/${createdAtDate.getFullYear()}`;
   };
 
+  const navigate = useNavigate(); // Initialize history
+
+  // LOGOUT
+  const handleLogout = () => {
+    console.log('Logout clicked');
+
+    try {
+      // Remove user data from localStorage
+      localStorage.removeItem('user');
+
+      // Redirect to the login page after logout
+      navigate('/home');
+    } catch (error) {
+      console.error('Error handling logout:', error);
+    }
+  };
+
+  const sortedBlogs = [...blogs].reverse(); // Create a reversed copy of the blogs array
+
   return (
     <div className='dashboard'>
-      <h1>
-        Welcome {user.name}!
-      </h1>
+
+      <h1>Welcome {user.name} </h1>
+
+      <Link onClick={handleLogout}>
+        <FaSignOutAlt /> Logout
+      </Link>
 
       <CreateBlog updateBlogs={updateBlogs} />
 
       <div>
         {/* Displaying blog details */}
-        {blogs.map((blog, i) => (
+        {sortedBlogs.map((blog, i) => (
           <div key={i} >
             <h2>{blog.title}</h2>
-            <p>{blog.story}</p>
             <a>{formatDate(blog.createdAt)}</a>
-            <br />
-            <br />
+            <p>{blog.story}</p>
 
             <button onClick={e => deleteBlog(blog._id)}>
-              <BsFillXSquareFill />
+              <BsFillTrash3Fill />
             </button>
 
-            {/* UpdateBlog i want it to be an overlay */}
-            <button onClick={() => handleEditClick(blog._id)}>Edit</button>
+            <button onClick={() => handleEditClick(blog._id)}>
+              <BsPencilFill />
+            </button>
 
-            {/* Conditional rendering of UpdateBlog with overlay */}
+            {/* Conditional rendering of UpdateBlog with Overlay */}
             {editingBlogId === blog._id && (
               <div>
                 <UpdateBlog getBlogs={getBlogs} blog={blog} />
-                <button className="overlay-background" onClick={handleOverlayClose}>Close</button>
-                
+                <button
+                  className="overlay-background"
+                  onClick={handleOverlayClose}>
+                  <BsFillXSquareFill />
+                </button>
               </div>)}
-
-
 
           </div>
         ))}

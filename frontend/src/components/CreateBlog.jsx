@@ -46,18 +46,20 @@ function createBlog({ updateBlogs }) {
     };
 
     return (
-        <div >
-            <h1>
+        <div className='createBlog'>
+            
+            <h2>
                 <BsEnvelopeHeartFill />
+                <br/>
                 Let's Blog!
-            </h1>
+            </h2>
 
-            <form onSubmit={postBlog}>
+            <form onSubmit={postBlog} className='createForm'>
 
                 <div>
                     <input
                         type='text'
-                        className='form-control'
+                        className='inputCreate'
                         id='title'
                         name='title'
                         value={title}
@@ -69,7 +71,7 @@ function createBlog({ updateBlogs }) {
                 <div>
                     <textarea
                         type='text'
-                        className='form-control'
+                        className='inputCreate'
                         id='story'
                         name='story'
                         value={story}
