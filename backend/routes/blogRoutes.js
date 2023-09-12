@@ -5,11 +5,6 @@ const router = express.Router()
 const { getBlogs, allBlogs, setBlog, updateBlog, deleteBlog } = require('../controllers/blogController')
 
 
-// Route Definitions: Get Blogs Route & Create Blog Route
-// router.route('/:userId').get(getBlogs)
-// router.route('/all').get(allBlogs)
-// router.route('/').post(setBlog)
-
 router.route('/').get(allBlogs).post(setBlog);
 router.route('/:userId').get(getBlogs); 
 
@@ -21,7 +16,10 @@ module.exports = router
 
 
 
-
+// Route Definitions: Get Blogs Route & Create Blog Route
+// router.route('/:userId').get(getBlogs)
+// router.route('/all').get(allBlogs)
+// router.route('/').post(setBlog)
 
 
 // Get Blogs Route

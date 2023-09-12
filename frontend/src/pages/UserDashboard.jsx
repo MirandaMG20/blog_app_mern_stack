@@ -103,7 +103,9 @@ function UserDashboard({ editBlogs }) {
       localStorage.removeItem('user'); // Remove user data from localStorage
       setBlogs([]); // Clear the blogs state
       setEditingBlogId(null); // Clear the editingBlogId state
-      navigate('/'); // Redirect to the Home page after logout
+      // navigate('/'); // Redirect to the Home page after logout
+      // Reload the current page (may use cache)
+      window.location.reload(navigate('/login'));
     } catch (error) {
       console.error('Error handling logout:', error);
     }
@@ -117,6 +119,8 @@ function UserDashboard({ editBlogs }) {
       <Link onClick={handleLogout}>
         <FaSignOutAlt /> Logout
       </Link>
+      <br />
+      <br />
 
       <CreateBlog updateBlogs={updateBlogs} />
 
@@ -142,7 +146,7 @@ function UserDashboard({ editBlogs }) {
                   onClick={() => handleEditClick(blog._id)}>
                   <BsPencilFill />
                 </button>
-                
+
               </div>
             </div>
 

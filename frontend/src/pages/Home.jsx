@@ -45,11 +45,11 @@ function Home() {
 
         <div key={i} className='BlogCard'>
 
-          <h2>{Blog.title}</h2>
+          <h1>{Blog.title}</h1>
           <a>By {Blog.name}</a>
           <a>{formatDate(Blog.createdAt)}</a>
           <p>{Blog.story}</p>
-          
+
         </div>
 
       ))}

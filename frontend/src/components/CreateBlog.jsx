@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { BsEnvelopeHeartFill, BsFillEnvelopePaperHeartFill } from "react-icons/bs";
+import React, { useState, useNavigate } from 'react'
+import { BsFillEnvelopePaperHeartFill } from "react-icons/bs";
 
 
 function createBlog({ updateBlogs }) {
@@ -12,12 +12,13 @@ function createBlog({ updateBlogs }) {
     const [title, setTitle] = useState('')
     const [story, setStory] = useState('')
 
+
     const postBlog = async (e) => {
         e.preventDefault();
 
         if (!user) {
             console.error('User data not found in localStorage');
-            return;
+            window.location.href = '/login'; // Redirect to the login page
         }
 
         const newBlog = {
@@ -58,8 +59,6 @@ function createBlog({ updateBlogs }) {
         <div className='createBlog'>
 
             <h2>
-                <BsEnvelopeHeartFill />
-                <br />
                 Let's Blog!
             </h2>
 
