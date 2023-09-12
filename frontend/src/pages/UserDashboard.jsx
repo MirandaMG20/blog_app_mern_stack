@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import CreateBlog from '../components/CreateBlog'
 import UpdateBlog from '../components/UpdateBlog'
@@ -7,10 +7,13 @@ import { FaSignOutAlt } from 'react-icons/fa'
 
 
 function UserDashboard({ editBlogs }) {
-  const user = JSON.parse(localStorage.user);
+  const userString = localStorage.getItem('user');
+  // Parse user data or set to null if not found
+  const user = userString ? JSON.parse(userString) : null;
 
   const [blogs, setBlogs] = useState([])
   const [editingBlogId, setEditingBlogId] = useState(null);
+  const isMounted = useRef(false); // Add a ref to track component mounting state
 
   const handleEditClick = (blogId) => {
     // Set the editingBlogId to the clicked blog's ID
@@ -24,7 +27,11 @@ function UserDashboard({ editBlogs }) {
 
   // Function to fetch blogs based on the search term
   const getBlogs = async () => {
-    // API endpoint URL with the search term we use a "template literals" ${}
+    if (!user) {
+      return; // Don't make the API call if user is null
+    }
+
+    // API endpoint URL with the user's ID
     const url = `http://localhost:3000/api/blogs/${user._id}`;
     const options = {
       method: 'GET',
@@ -36,7 +43,7 @@ function UserDashboard({ editBlogs }) {
       const response = await fetch(url, options);
       const data = await response.json();
       // console.log(data)
-      //Updating the state with fetched book data
+      //Updating the state with fetched blog data
       setBlogs(data);
     } catch (error) {
       // Logging an error if the fetch request fails
@@ -45,9 +52,15 @@ function UserDashboard({ editBlogs }) {
   };
 
   useEffect(() => {
-    getBlogs()
-    // console.log('useEffect is running')
-  }, []) // Empty dependency array ensures this effect runs only once
+    if (!isMounted.current) {
+      // Component is mounting, do not fetch blogs
+      isMounted.current = true;
+    } else if (user) {
+      // Component is already mounted and user is available, fetch blogs
+      getBlogs();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]) // Include 'user' in the dependency array to update when user changes
 
   const deleteBlog = async (blogId) => {
     const url = `http://localhost:3000/api/blogs/${blogId}`;
@@ -60,11 +73,11 @@ function UserDashboard({ editBlogs }) {
       // Sending the fetch request and awaiting the response
       await fetch(url, options);
       // console.log(data)
-      //Updating the state with fetched book data
+      //Updating the state with fetched blog data
       getBlogs();
     } catch (error) {
       // Logging an error if the fetch request fails
-      console.log(error);
+      console.log('Error deleting blog:', error);
     }
   }
 
@@ -73,35 +86,33 @@ function UserDashboard({ editBlogs }) {
     setBlogs([newBlog, ...blogs]);
   };
 
+  // Create a reversed copy of the blogs array
+  const sortedBlogs = [...blogs].reverse();
+
   const formatDate = (date) => {
     // Format the createdAt date to display only month, date, and year
     const createdAtDate = new Date(date);
     return `${createdAtDate.getMonth() + 1}/${createdAtDate.getDate()}/${createdAtDate.getFullYear()}`;
   };
 
-  const navigate = useNavigate(); // Initialize history
-
   // LOGOUT
+  const navigate = useNavigate(); // Initialize history
   const handleLogout = () => {
     console.log('Logout clicked');
-
     try {
-      // Remove user data from localStorage
-      localStorage.removeItem('user');
-
-      // Redirect to the login page after logout
-      navigate('/home');
+      localStorage.removeItem('user'); // Remove user data from localStorage
+      setBlogs([]); // Clear the blogs state
+      setEditingBlogId(null); // Clear the editingBlogId state
+      navigate('/'); // Redirect to the Home page after logout
     } catch (error) {
       console.error('Error handling logout:', error);
     }
   };
 
-  const sortedBlogs = [...blogs].reverse(); // Create a reversed copy of the blogs array
-
   return (
     <div className='dashboard'>
 
-      <h1>Welcome {user.name} </h1>
+      <h1>Welcome {user ? user.name : 'Guest'} </h1>
 
       <Link onClick={handleLogout}>
         <FaSignOutAlt /> Logout

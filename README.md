@@ -10,6 +10,12 @@ This repository contains the source code for the Miranda Blog App, a full-stack 
 - [Technologies](#technologies)
 - [Contact](#contact)
 
+## Getting Started
+
+- Trello Board: [MirandaMG20](https://github.com/MirandaMG20)
+- Figma Wireframe: [M. G. Miranda](https://www.figma.com/file/7QtOHm8Zsg6Ja1wcrRTbYo/Blog-App-Wireframe?type=whiteboard&node-id=0%3A1&t=r0OL8cS2gXJzitIl-1)
+- Lucid ERD: [MG Miranda](https://lucid.app/lucidchart/2f385cd7-3477-4a20-8266-188e94ae5536/edit?viewport_loc=-822%2C-30%2C996%2C860%2C0_0&invitationId=inv_9cc5840a-321a-45a2-ab36-87ce9aba30b0)
+
 ## Description
 
 The **Miranda Blog App** is designed to facilitate blog creation, management, and sharing among users. It offers the following key features:

@@ -3,13 +3,22 @@ import { BsEnvelopeHeartFill, BsFillEnvelopePaperHeartFill } from "react-icons/b
 
 
 function createBlog({ updateBlogs }) {
-    const user = JSON.parse(localStorage.user);
+    // const user = JSON.parse(localStorage.user);
+
+    const userString = localStorage.getItem('user');
+    // Parse user data or set to null if not found
+    const user = userString ? JSON.parse(userString) : null;
 
     const [title, setTitle] = useState('')
     const [story, setStory] = useState('')
 
     const postBlog = async (e) => {
         e.preventDefault();
+
+        if (!user) {
+            console.error('User data not found in localStorage');
+            return;
+        }
 
         const newBlog = {
             title,
@@ -47,10 +56,10 @@ function createBlog({ updateBlogs }) {
 
     return (
         <div className='createBlog'>
-            
+
             <h2>
                 <BsEnvelopeHeartFill />
-                <br/>
+                <br />
                 Let's Blog!
             </h2>
 
