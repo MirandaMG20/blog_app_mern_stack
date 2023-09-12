@@ -45,18 +45,27 @@ body {
     padding: 20px;
 }
 
+.dashBlog {
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
 .dashboard {
     display: flex;
     place-items: center;
     flex-direction: column;
-    /* text-align: center; */
     line-height: 1.3;
     margin: 20px;
     padding: 20px;
 }
 
 .register,
-.login {
+.login, 
+.createBlog,
+.updateForm {
     display: flex;
     place-items: center;
     flex-direction: column;
@@ -76,14 +85,6 @@ body {
     border: none;
     box-shadow: 0 0 8px;
     background-color: #cbc1f0;
-}
-
-.createBlog {
-    display: flex;
-    place-items: center;
-    flex-direction: column;
-    text-align: center;
-    line-height: 1.3;
 }
 
 .iconBtns {
@@ -110,13 +111,6 @@ body {
     border: none;
     box-shadow: 0 0 8px;
     background-color: #cbc1f0;
-}
-
-
-.UpdateForm {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.3;
 }
 
 .footer {

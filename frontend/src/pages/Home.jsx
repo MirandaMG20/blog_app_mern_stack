@@ -42,12 +42,16 @@ function Home() {
     <div id='home-container'>
 
       {sortedInfo.map((Blog, i) => (
+
         <div key={i} className='BlogCard'>
+
           <h2>{Blog.title}</h2>
           <a>By {Blog.name}</a>
           <a>{formatDate(Blog.createdAt)}</a>
           <p>{Blog.story}</p>
+          
         </div>
+
       ))}
 
     </div>

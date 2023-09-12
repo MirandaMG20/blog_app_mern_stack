@@ -38,16 +38,16 @@ function updateBlog({ getBlogs, blog }) {
     };
 
     return (
-        <div className="UpdateForm">
+        <div className='createBlog'>
 
             <h3>Update Blog</h3>
 
-            <form onSubmit={postBlog}>
+            <form onSubmit={postBlog} className='createForm'>
 
                 <div>
                     <input
                         type='text'
-                        className='form-control'
+                        className='inputCreate'
                         id='title'
                         name='title'
                         value={title}
@@ -59,7 +59,7 @@ function updateBlog({ getBlogs, blog }) {
                 <div>
                     <textarea
                         type='text'
-                        className='form-control'
+                        className='inputCreate'
                         id='story'
                         name='story'
                         value={story}

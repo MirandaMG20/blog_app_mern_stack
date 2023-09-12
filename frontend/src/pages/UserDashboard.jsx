@@ -123,30 +123,39 @@ function UserDashboard({ editBlogs }) {
       <div>
         {/* Displaying blog details */}
         {sortedBlogs.map((blog, i) => (
+
           <div key={i} >
-            <h2>{blog.title}</h2>
-            <a>{formatDate(blog.createdAt)}</a>
-            <p>{blog.story}</p>
-
-            <button
-              className="iconBtns"
-              onClick={e => deleteBlog(blog._id)}>
-              <BsFillTrash3Fill />
-            </button>
-
-            <button
-              className="iconBtns"
-              onClick={() => handleEditClick(blog._id)}>
-              <BsPencilFill />
-            </button>
-
-            {/* Conditional rendering of UpdateBlog with Overlay */}
-            {editingBlogId === blog._id && (
+            <div className="dashBlog">
+              <h2>{blog.title}</h2>
+              <a>{formatDate(blog.createdAt)}</a>
+              <p>{blog.story}</p>
               <div>
-                <UpdateBlog getBlogs={getBlogs} blog={blog} />
 
                 <button
                   className="iconBtns"
+                  onClick={e => deleteBlog(blog._id)}>
+                  <BsFillTrash3Fill />
+                </button>
+
+                <button
+                  className="iconBtns"
+                  onClick={() => handleEditClick(blog._id)}>
+                  <BsPencilFill />
+                </button>
+                
+              </div>
+            </div>
+
+            {/* Conditional rendering of UpdateBlog with Overlay */}
+            {editingBlogId === blog._id && (
+              <div className='updateForm'>
+
+                <UpdateBlog getBlogs={getBlogs} blog={blog} />
+
+                <button
+                  type="button"
+                  className="iconBtns"
+                  id='closeUpdate'
                   onClick={handleOverlayClose}>
                   <BsFillXSquareFill />
                 </button>
