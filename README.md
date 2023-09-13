@@ -61,6 +61,11 @@ The **Miranda Blog App** utilizes the following technologies:
   - Multer
   - Dotenv
 
+## Unsolved Problems
+
+- **Image Upload**: The image upload feature that allow users to select and upload images directly from their devices.
+- **Likes**: Where users can like their favorite blog posts, and the total likes displayed on each post.
+
 ## Future Updates
 
 In future updates of the Miranda Blog App, we plan to introduce exciting new features to enhance the user experience. Some of the upcoming features include:
@@ -82,7 +87,6 @@ In future updates of the Miranda Blog App, we plan to introduce exciting new fea
 - **Comments**: Users will be able to leave comments on blog posts to interact with the authors and engage in discussions.
 
 - **Likes**: Users can like and favorite their favorite blog posts, and the total likes will be displayed on each post.
-
 
 ## Contact
 
