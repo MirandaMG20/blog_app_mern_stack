@@ -47,6 +47,13 @@ body {
     padding: 20px;
 }
 
+.likes{
+    display: flex;
+    place-items: center;
+    text-align: center;
+    align-items: center;
+}
+
 .dashBlog {
     display: flex;
     place-items: center;

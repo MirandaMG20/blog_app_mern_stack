@@ -3,15 +3,19 @@ import { Link, useNavigate } from "react-router-dom"
 import { BsPencilSquare } from "react-icons/bs";
 
 function Register() {
+  // Initialize state variables for user registration
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const navigate = useNavigate(); // Create a history object
+  // Create a history object for navigation
+  const navigate = useNavigate(); 
 
+  // Function to handle user registration when the form is submitted
   const registerUser = async (e) => {
     e.preventDefault();
 
+     // Create an object containing user registration data
     const newUser = {
       name,
       email,
@@ -20,6 +24,7 @@ function Register() {
 
 
     try {
+      // Send a POST request to the registration endpoint
       const response = await fetch('http://localhost:3000/auth/register', {
         method: 'POST',
         headers: {
@@ -31,7 +36,7 @@ function Register() {
       if (response.status === 200) {
         // Registration successful
         console.log('Registration successful');
-        // If registration is successful, navigate to the user dashboard
+        // If registration is successful, navigate to the login page
         navigate('/login');
       } else {
         // Registration failed
@@ -91,7 +96,9 @@ function Register() {
         </button>
 
         <div>
-          Already a member? <Link to={'/login'}>Login</Link>
+          Already a member? 
+          {/* Link to the login page */}
+          <Link to={'/login'}>Login</Link>
         </div>
 
       </form>

@@ -5,12 +5,12 @@ const userSchema = mongoose.Schema(
     {
         name: {
             type: String,
-            required: [true, 'Please enter your name']
+            required: [true, 'Please enter your name'] // Field is required with an error message if missing
         },
         email: {
             type: String,
-            unique: true,
-            lowercase: true,
+            unique: true, // Ensures email uniqueness in the database
+            lowercase: true, // Stores email addresses in lowercase for consistency
             required: [true, 'Please enter an email']
             
         },
@@ -20,12 +20,12 @@ const userSchema = mongoose.Schema(
         },
         picture: {
             type: String,
-            default: '',
-            required: [false, 'Please add your picture']
+            default: '', // Default value if not provided
+            required: [false, 'Please add your picture'] // Field is optional with an error message if provided
         },
     },
     {
-        timestamps: true
+        timestamps: true // Automatically add createdAt and updatedAt timestamps
     })
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema) // Create and export the User model based on the schema

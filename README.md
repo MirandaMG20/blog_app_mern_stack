@@ -50,7 +50,6 @@ The **Miranda Blog App** utilizes the following technologies:
   - React
   - React Router
   - Bootstrap 5
-  - MDB React UI Kit
 
 - **Backend**:
   - Node.js
@@ -91,6 +90,6 @@ If you have any questions, suggestions, or would like to get in touch with Miran
 
 - GitHub: [MirandaMG20](https://github.com/MirandaMG20)
 - LinkedIn: [M. G. Miranda](https://www.linkedin.com/in/m-g-miranda)
-- Netlify: [Miranda Blog App](https://miranda-blog-app.netlify.app)
+- Netlify: [Miranda Blog App](https://miranda-blog-app.netlify.app/)
 
 Feel free to explore and enjoy the Miranda Blog App!

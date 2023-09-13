@@ -8,7 +8,7 @@ function Header() {
 
     return (
         <>
-
+            {/* Define the header section */}
             <header className='header'>
 
                 <div>
@@ -23,6 +23,7 @@ function Header() {
 
                 </div>
 
+                {/* Create a link to the home page with the logo */}
                 <Link to='/'>
                     <img className='iconBtns'
                         src='images/wide-miranda-logo-transparent.png'

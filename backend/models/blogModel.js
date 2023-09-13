@@ -5,7 +5,7 @@ const blogSchema = mongoose.Schema(
     {
         image: {
             type: String,
-            require: false,
+            require: false, // Field is optional
         },
         title: {
             type: String,
@@ -22,12 +22,16 @@ const blogSchema = mongoose.Schema(
         userId: {
             type: String,
             require: true,
-        }
+        },
+        likes: {
+            type: Number,
+            default: 0, // Initialize likes count to 0
+        },
     },
     {
-        timestamps: true
+        timestamps: true // Automatically add createdAt and updatedAt timestamps
     }
 )
 
-module.exports = mongoose.model('Blog', blogSchema)
+module.exports = mongoose.model('Blog', blogSchema) // Create and export the Blog model based on the schema
 

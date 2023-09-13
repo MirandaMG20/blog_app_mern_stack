@@ -43,7 +43,7 @@ function UserDashboard({ editBlogs }) {
       const response = await fetch(url, options);
       const data = await response.json();
       // console.log(data)
-      //Updating the state with fetched blog data
+      // Updating the state with fetched blog data
       setBlogs(data);
     } catch (error) {
       // Logging an error if the fetch request fails
@@ -103,7 +103,6 @@ function UserDashboard({ editBlogs }) {
       localStorage.removeItem('user'); // Remove user data from localStorage
       setBlogs([]); // Clear the blogs state
       setEditingBlogId(null); // Clear the editingBlogId state
-      // navigate('/'); // Redirect to the Home page after logout
       // Reload the current page (may use cache)
       window.location.reload(navigate('/login'));
     } catch (error) {

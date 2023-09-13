@@ -8,11 +8,13 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const navigate = useNavigate(); // Create a history object
+  // Create a history object for navigation
+  const navigate = useNavigate();
 
   const loginUser = async (e) => {
     e.preventDefault();
 
+    // Create an object to send as the request body
     const authUser = {
       email,
       password,
@@ -31,9 +33,9 @@ function Login() {
       if (response.status === 200) {
         console.log('Login successful');
         const responseData = await response.json(); // Convert the response body to JSON
-        localStorage.setItem('user', JSON.stringify(responseData));
+        localStorage.setItem('user', JSON.stringify(responseData)); // Store user data in local storage
 
-        navigate('/user');
+        navigate('/user'); // Redirect to the user dashboard
       } else {
         console.log('Login failed');
         const errorData = await response.json();
@@ -79,7 +81,9 @@ function Login() {
         </button>
 
         <div>
-          Not a member? <Link to={'/register'}>Register</Link>
+          Not a member? 
+          {/* Link to the registration page */}
+          <Link to={'/register'}>Register</Link> 
         </div>
 
       </form>

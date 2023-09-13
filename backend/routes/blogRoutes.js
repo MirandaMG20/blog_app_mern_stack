@@ -1,12 +1,13 @@
 // Importing Dependencies and Controllers
 const express = require('express')
 const router = express.Router()
+
 // Import from blogController
 const { getBlogs, allBlogs, setBlog, updateBlog, deleteBlog } = require('../controllers/blogController')
 
-
+// Route Definitions: Get Blogs Route & Create Blog Route
 router.route('/').get(allBlogs).post(setBlog);
-router.route('/:userId').get(getBlogs); 
+router.route('/:userId').get(getBlogs);
 
 // Route Definitions: Update Blog Route & Delete Blog Route
 router.route('/:id').put(updateBlog).delete(deleteBlog)
@@ -16,7 +17,7 @@ module.exports = router
 
 
 
-// Route Definitions: Get Blogs Route & Create Blog Route
+
 // router.route('/:userId').get(getBlogs)
 // router.route('/all').get(allBlogs)
 // router.route('/').post(setBlog)

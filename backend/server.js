@@ -1,43 +1,51 @@
-// Set up .env environment
+// Load environment variables from a .env file 
 const dotenv = require('dotenv').config()
+
+// Import necessary modules
 const path = require('path')
 const cors = require('cors')
-const { errorHandler } = require('./middleware/errorMiddleware') // Not require
 const express = require('express')
 const app = express()
-// Set up Mongoose connection
+
+// Import the errorHandler function from a custom middleware (not required)
+const { errorHandler } = require('./middleware/errorMiddleware') 
+
+// Import the connectDB function responsible for setting up a Mongoose connection
 const connectDB = require('./config/database')
 
-// Bringing in Routes
+// Import routes for different parts of the application
 const authRoute = require('./controllers/userController')
 const userRoute = require('./routes/userRoutes')
 const blogRoute = require('./routes/blogRoutes')
 
-// Set listening port
+// Set the listening port for the server
 const port = process.env.PORT || 3001
 
-// Listener
+// Start the server and listen on the specified port
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`)
 })
 
-// Connect to the MongoDB
+// Connect to the MongoDB database using Mongoose
 connectDB()
 
-// This middleware parses incoming JSON data and makes it available in req.body
+// Middleware to parse incoming JSON data and make it available in req.body
 app.use(express.json())
-// This middleware parses incoming URL-encoded data and makes it available in req.body
+
+// Middleware to parse incoming URL-encoded data and make it available in req.body
 app.use(express.urlencoded({ extended: false }))
 
+// Serve static files (images) from the '/images' directory
 app.use('/images', express.static(path.join(__dirname, '/images')))
 
 // app.use(cors())
+// Apply CORS middleware with the defined options
 // SETTING UP CORS OPTIONS TO AVOID ACCESS-CONTROL-ALLOW-ORIGIN ISSUES
 const corsOption = {
-    origin: "*",
-    methods: "GET, PUT, POST, DELETE",
-    credentials: true,
-    exposeHeaders: ["X-auth-token"],
+    origin: "*", // Allow requests from any origin (for demonstration purposes; you may restrict this)
+    methods: "GET, PUT, POST, DELETE, PATCH", // Define the HTTP methods allowed
+    credentials: true, // Include credentials (e.g., cookies) in CORS requests
+    exposeHeaders: ["X-auth-token"], // Expose custom headers in the response
 }
 // TRYING TO AVOID THE ACCESS-CONTROL-ALLOW-ORIGIN ISSUE
 app.use(cors(corsOption));
@@ -47,10 +55,10 @@ app.use(cors(corsOption));
 //     res.status(200).json('File has been uploaded')
 // })
 
-// Routing 
+// Define routes for handling authentication, user-related operations, and blog-related operations
 app.use('/auth', authRoute)
 app.use('/users', userRoute)
 app.use('/api/blogs', blogRoute)
 
-// This middleware is used to handle errors in the routes
-app.use(errorHandler) // Not require
+// Apply error handling middleware to handle errors in the routes (not required if handled elsewhere)
+app.use(errorHandler) // This line may not be necessary depending on how errors are handled

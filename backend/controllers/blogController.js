@@ -1,88 +1,98 @@
-// async-handler package if you do not want to use "try" and "catch"
+// Import the async-handler package to simplify error handling
 const asyncHandler = require('express-async-handler')
-// Bring in our Blog Controller
+
+// Import the Blog model
 const Blog = require('../models/blogModel')
 
 
-//@desc     Post blog
-//@route    POST /api/blogs
-//@access   Private
+// @desc     Create a new blog post
+// @route    POST /api/blogs
+// @access   Private
 const setBlog = asyncHandler(async (req, res) => {
     // Check if the request body contains the required fields (title and story)
     if (!req.body.title || !req.body.story) {
         res.status(400);
         throw new Error('Please provide a title and story for the blog post');
     }
-
+    // Create a new blog instance with the request body
     const blog = new Blog(req.body)
+
     try {
+        // Save the new blog to the database
         const newBlog = await blog.save()
 
-        res.status(200).json({ ...newBlog.toObject()});
+        // Return the newly created blog as a JSON response
+        res.status(200).json({ ...newBlog.toObject() });
 
     } catch (error) {
+        // Handle errors and return a 500 (Internal Server Error) status
         res.status(500).json(error)
     }
 })
 
-//@desc     Get Blogs 
-//@route    GET /api/blogs
-//@access   Private
+// @desc     Get blogs of a specific user
+// @route    GET /api/blogs
+// @access   Private
 const getBlogs = asyncHandler(async (req, res) => {
-    // Get Blogs from the database
-    const blogs = await Blog.find({userId: req.params.userId})
+    // Get blogs from the database that belong to the specified user
+    const blogs = await Blog.find({ userId: req.params.userId })
 
-    // Return the blogs
+    // Return the blogs as a JSON response
     res.status(200).json(blogs)
 })
 
-//@desc     Get All Blogs 
-//@route    GET /api/blogs/all
-//@access   Private
+// @desc     Get all blogs
+// @route    GET /api/blogs/all
+// @access   Private
 const allBlogs = asyncHandler(async (req, res) => {
-    // Get Blogs from the database
+    // Get all blogs from the database
     const blogs = await Blog.find()
 
-    // Return the blogs
+    // Return all blogs as a JSON response
     res.status(200).json(blogs)
 })
 
-//@desc     Update blog
-//@route    PUT /api/blogs/:id
-//@access   Private
+// @desc     Update a blog post
+// @route    PUT /api/blogs/:id
+// @access   Private
 const updateBlog = asyncHandler(async (req, res) => {
-    // Find the blog to update
+    // Find the blog to update by its ID
     const blog = await Blog.findById(req.params.id)
 
-    // Check if blog exists
+    // Check if the blog exists
     if (!blog) {
         res.status(400)
         throw new Error('Blog not found')
     }
 
+    // Update the blog with the new data from the request body
     const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, req.body, { new: true })
 
+    // Return the updated blog as a JSON response
     res.status(200).json(updatedBlog)
 })
 
-//@desc     Delete blog
-//@route    DELETE /api/blogs/:id
-//@access   Private
+// @desc     Delete a blog post
+// @route    DELETE /api/blogs/:id
+// @access   Private
 const deleteBlog = asyncHandler(async (req, res) => {
-    // Find blog the id
+    // Find the blog by its ID
     const blog = await Blog.findById(req.params.id)
 
-    // if no blog exists
+    // Check if the blog exists
     if (!blog) {
         res.status(400)
         throw new Error('Blog not found')
     }
 
+    // Remove the blog from the database
     await Blog.findByIdAndRemove(req.params.id)
 
+    // Return a success message as a JSON response
     res.status(200).json({ message: `Deleted Blog ${req.params.id}` })
 })
 
+// Export the route handlers as an object
 module.exports = {
     getBlogs,
     allBlogs,
@@ -91,34 +101,3 @@ module.exports = {
     deleteBlog,
 }
 
-
-// Handles file uploads in Node.js
-// const multer = require('multer');
-
-// Define a storage location for uploaded images
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => { // cb = callback
-//         cb(null, 'uploads/') // Specify the directory where uploaded files will be stored
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, Date.now() + '-' + 'file.png') // Rename the file to include a timestamp
-//     }
-//  // upload.single('image'),    
-// })
-// // Create a multer instance with the storage configuration
-// const upload = multer({ storage: storage })
-
-//  // Check if an image file was uploaded
-//  if (!req.file) {
-//     res.status(400);
-//     throw new Error('Please upload an image file');
-// }
-
-// try {
-//     // Create a new blog post using the Blog model
-//     const blog = await Blog.create({
-//         title: req.body.title,
-//         story: req.body.story,
-//         user: req.user._id, // Use the id of the authenticated user
-//         image: req.file.path, // Save the file path in the 'picture' field
-//     });
