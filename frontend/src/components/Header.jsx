@@ -17,6 +17,7 @@ function Header() {
                         <BsHouseDoorFill /> HOME
                     </Link>
                     <br />
+                    <br />
                     <Link to='/user'>
                         <BsEmojiSunglassesFill />  My Dashboard
                     </Link>
@@ -34,15 +35,14 @@ function Header() {
 
                 <div>
 
-                    <Link to='/register'>
-                        <FaUser /> Register
-                    </Link>
-                    <br />
-
                     <Link to='/login'>
                         <FaSignInAlt /> Login
                     </Link>
                     <br />
+                    <br />
+                    <Link to='/register'>
+                        <FaUser /> Register
+                    </Link>
 
                     {/* <Link>
                         <FaSignOutAlt /> Logout

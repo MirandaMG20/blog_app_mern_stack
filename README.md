@@ -63,8 +63,8 @@ The **Miranda Blog App** utilizes the following technologies:
 
 ## Unsolved Problems
 
-- **Image Upload**: The image upload feature that allow users to select and upload images directly from their devices.
 - **Likes**: Where users can like their favorite blog posts, and the total likes displayed on each post.
+- **Image Upload**: The image upload feature that allow users to select and upload images directly from their devices.
 
 ## Future Updates
 
@@ -73,19 +73,16 @@ In future updates of the Miranda Blog App, we plan to introduce exciting new fea
 ### User Profile
 
 - **User Profiles**: Users will have the option to create and customize their profiles. They can add a profile picture, a brief bio, and links to their social media profiles.
-
 - **Profile Editing**: Users can update their profile information, such as their profile picture and bio, directly from the User Dashboard.
 
 ### Blog Post Enhancements
 
 - **Image Upload**: Users will be able to include images in their blog posts to make them more visually engaging. The image upload feature will allow users to select and upload images directly from their devices.
-
 - **Image Gallery**: Users can create image galleries within their blog posts to showcase multiple images in an organized manner.
 
 ### User Interaction
 
 - **Comments**: Users will be able to leave comments on blog posts to interact with the authors and engage in discussions.
-
 - **Likes**: Users can like and favorite their favorite blog posts, and the total likes will be displayed on each post.
 
 ## Contact

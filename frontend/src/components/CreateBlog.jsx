@@ -70,7 +70,7 @@ function createBlog({ updateBlogs }) {
 
             <form onSubmit={postBlog} className='createForm'>
 
-                <div>
+                {/* <div>
                     <input
                         type='file'
                         className='inputCreate'
@@ -79,7 +79,7 @@ function createBlog({ updateBlogs }) {
                         // value={image}
                         placeholder='Image'
                     />
-                </div>
+                </div> */}
 
                 <div>
                     <input

@@ -47,13 +47,7 @@ const corsOption = {
     credentials: true, // Include credentials (e.g., cookies) in CORS requests
     exposeHeaders: ["X-auth-token"], // Expose custom headers in the response
 }
-// TRYING TO AVOID THE ACCESS-CONTROL-ALLOW-ORIGIN ISSUE
-app.use(cors(corsOption));
-
-// Middleware => Moved it to blogController
-// app.post('/upload', upload.single('file'), (req, res) => {
-//     res.status(200).json('File has been uploaded')
-// })
+app.use(cors(corsOption));// TRYING TO AVOID THE ACCESS-CONTROL-ALLOW-ORIGIN ISSUE
 
 // Define routes for handling authentication, user-related operations, and blog-related operations
 app.use('/auth', authRoute)
@@ -62,3 +56,11 @@ app.use('/api/blogs', blogRoute)
 
 // Apply error handling middleware to handle errors in the routes (not required if handled elsewhere)
 app.use(errorHandler) // This line may not be necessary depending on how errors are handled
+
+
+
+
+// Middleware => Moved it to blogController
+// app.post('/upload', upload.single('file'), (req, res) => {
+//     res.status(200).json('File has been uploaded')
+// })
